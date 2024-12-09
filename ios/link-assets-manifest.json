@@ -1,0 +1,17 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/AvenirNextCyr-Demi.ttf",
+      "sha1": "a15428daf6c7711fa849ada35a487d2b751f8a05"
+    },
+    {
+      "path": "src/assets/fonts/AvenirNextCyr-Medium.ttf",
+      "sha1": "0c8483b3dc6a252958b36658338954150714129d"
+    },
+    {
+      "path": "src/assets/fonts/AvenirNextCyr-Regular.ttf",
+      "sha1": "581bf3f11b1fd9ccc58bad25753bebe94e8a782a"
+    }
+  ]
+}

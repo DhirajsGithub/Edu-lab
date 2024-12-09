@@ -1,0 +1,36 @@
+{
+  "students": [
+    {
+      "name": "John Doe",
+      "profile_picture": "https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg",
+      "registration_number": "REG2023001",
+      "guardians": {
+        "father": {
+          "profile_picture": "https://www.shutterstock.com/image-photo/profile-picture-smiling-young-african-260nw-1873784920.jpg",
+          "full_name": "Michael Doe",
+          "email": "michael.doe@example.com",
+          "mobile_number": "9876543210"
+        },
+        "mother": {
+          "profile_picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6Hb5xzFZJCTW4cMqmPwsgfw-gILUV7QevvQ&s",
+          "full_name": "Sarah Doe",
+          "email": "sarah.doe@example.com",
+          "mobile_number": "9876543211"
+        },
+        "brother_1": {
+          "profile_picture": "https://thumbs.dreamstime.com/b/profile-picture-caucasian-male-employee-posing-office-happy-young-worker-look-camera-workplace-headshot-portrait-smiling-190186649.jpg",
+          "full_name": "James Doe",
+          "email": "james.doe@example.com",
+          "mobile_number": "9876543212"
+        }
+      },
+      "class": "10A",
+      "age": 15,
+      "mobile_number": "9123456780",
+      "email": "johndoe@example.com",
+      "address": "123 Maple Street, Springfield",
+      "gender": "Male",
+      "hobbies": ["Football", "Reading"]
+    }
+  ]
+}
