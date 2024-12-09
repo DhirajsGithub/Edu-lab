@@ -1,8 +1,11 @@
-import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, StyleSheet, View} from 'react-native';
 import React from 'react';
 import {Colors} from '../theme/Colors';
 import Header from '../components/Header';
 import StudentsActionHeader from '../components/StudentsActionHeader';
+import StudentsList from '../components/StudentsList';
+import AddButton from '../components/AddButton';
+import DetailInfoModal from '../components/DetailInfoModal';
 
 const Students = () => {
   return (
@@ -12,9 +15,10 @@ const Students = () => {
           <Header />
           <StudentsActionHeader />
         </View>
-
-        <ScrollView></ScrollView>
+        <StudentsList />
       </View>
+      <AddButton />
+      <DetailInfoModal />
     </SafeAreaView>
   );
 };

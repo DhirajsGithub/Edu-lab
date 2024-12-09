@@ -1,16 +1,32 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import {ScrollView, StyleSheet} from 'react-native';
+import React from 'react';
+import BriefInfoCard from './BriefInfoCard';
 
 const StudentsList = () => {
   return (
-    <View>
-      <Text>StudentsList</Text>
-    </View>
-  )
-}
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={{gap: 20, paddingBottom: 100, marginTop: 20}}>
+      <BriefInfoCard />
+      <BriefInfoCard />
+      <BriefInfoCard />
+      <BriefInfoCard />
+      <BriefInfoCard />
+      <BriefInfoCard />
+      <BriefInfoCard />
+      <BriefInfoCard />
+      <BriefInfoCard />
+      <BriefInfoCard />
+      <BriefInfoCard />
+      <BriefInfoCard />
+      <BriefInfoCard />
+      <BriefInfoCard />
+    </ScrollView>
+  );
+};
 
-export default StudentsList
+export default StudentsList;
 
 const styles = StyleSheet.create({
-    container:{}
-})
+  container: {},
+});
