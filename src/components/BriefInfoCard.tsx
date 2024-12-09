@@ -1,8 +1,9 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React, {useState} from 'react';
-import {Colors} from '../theme/Colors';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
 import Avatar from './Avatar';
 import CustomCheckBox from './CustomCheckBox';
+import {Guardian, Student} from '../utils/types';
+import {Colors} from '../theme/Colors';
 
 const MetaDetail = ({label, value}: {label: string; value: string}) => {
   return (
@@ -17,41 +18,71 @@ const MetaDetail = ({label, value}: {label: string; value: string}) => {
   );
 };
 
-const BriefInfoCard = () => {
-  const [isSelected, setIsSelected] = useState(false);
-  const onValueChange = () => {
-    setIsSelected(!isSelected);
+const BriefInfoCard = ({
+  student,
+  onPress,
+  handlSelectStudentPress,
+  isSelected,
+}: {
+  student: Student;
+  onPress: (student: Student) => void;
+  handlSelectStudentPress: (student: Student, selected: boolean) => void;
+  selectAllToggle: boolean;
+  isSelected: boolean;
+}) => {
+  const [localIsSelected, setLocalIsSelected] = useState(isSelected);
+
+  useEffect(() => {
+    setLocalIsSelected(isSelected);
+  }, [isSelected]);
+
+  const onValueChange = (val: boolean) => {
+    handlSelectStudentPress(student, val);
   };
+
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={() => onPress(student)}
+      style={styles.container}>
       <View style={styles.view1}>
         <View style={styles.avaName}>
-          <Avatar />
-          <Text style={styles.nameText}>Anjali Topno</Text>
+          <Avatar uri={student.profile_picture} />
+          <Text style={styles.nameText}>{student.name}</Text>
         </View>
-        <View>
+        <TouchableOpacity accessibilityRole="checkbox">
           <CustomCheckBox
             onValueChange={onValueChange}
-            isSelected={isSelected}
+            isSelected={localIsSelected}
           />
-        </View>
+        </TouchableOpacity>
       </View>
+
       <View style={styles.metaDetails}>
-        <MetaDetail label="Registration Number" value="24ART00016" />
-        <MetaDetail label="Age" value="2y 4m" />
-        <MetaDetail label="Classes" value="Varun, Perk" />
+        <MetaDetail
+          label="Registration Number"
+          value={student.registration_number}
+        />
+        <MetaDetail label="Age" value={`${student.age} years`} />
+        <MetaDetail label="Classes" value={student.class} />
       </View>
+
       <View style={styles.familyMembersView}>
         <Text numberOfLines={1} style={styles.label}>
           Family Members
         </Text>
         <View style={styles.familyAvatars}>
-          <Avatar width={25} height={25} />
-          <Avatar width={25} height={25} />
-          <Avatar width={25} height={25} />
+          {Object.values(student.guardians).map((guardian: Guardian) => (
+            <Avatar
+              key={guardian.id}
+              uri={guardian.profile_picture}
+              width={25}
+              height={25}
+            />
+          ))}
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -71,7 +102,12 @@ const styles = StyleSheet.create({
   avaName: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 5,
+    gap: 10,
+  },
+  avatar: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
   },
   nameText: {
     fontSize: 16,
@@ -106,8 +142,13 @@ const styles = StyleSheet.create({
   },
   familyAvatars: {
     flexDirection: 'row',
-    gap: 5,
     flexWrap: 'wrap',
+    gap: 5,
+  },
+  familyAvatar: {
+    width: 25,
+    height: 25,
+    borderRadius: 12.5,
   },
   familyMembersView: {
     gap: 5,

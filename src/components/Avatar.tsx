@@ -1,14 +1,14 @@
 import {Image, StyleSheet, View} from 'react-native';
 import React from 'react';
 
-const Avatar = ({width = 30, height = 30}: {width?: number; height?: number}) => {
+const Avatar = ({width = 30, height = 30, uri}: {width?: number; height?: number; uri: string}) => {
   return (
     <View>
       <Image
         style={[{width, height, borderRadius: '100%'}]}
-        resizeMode="contain"
+        resizeMode="cover"
         source={{
-          uri: 'https://reactnative.dev/img/tiny_logo.png',
+          uri,
         }}
       />
     </View>

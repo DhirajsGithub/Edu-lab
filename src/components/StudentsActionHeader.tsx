@@ -4,28 +4,38 @@ import {Colors} from '../theme/Colors';
 import CustomCheckBox from './CustomCheckBox';
 import {Trash2} from 'lucide-react-native';
 
-const StudentsActionHeader = () => {
-  const [isSelected, setSelection] = useState(false);
-
-  const onValueChange = () => {
-    setSelection(!isSelected);
+const StudentsActionHeader = ({
+  studentsLength,
+  handleDeletePress,
+  selectAllStudents,
+  allStudentsSelected,
+}: {
+  studentsLength: number;
+  handleDeletePress: () => void;
+  selectAllStudents: (val: boolean) => void;
+  allStudentsSelected: boolean;
+}) => {
+  const onValueChange = (val: boolean) => {
+    selectAllStudents(val);
   };
   return (
     <View style={styles.container}>
       <View style={styles.selected}>
         <Text style={styles.headText}>All Students</Text>
         <View style={styles.selectedView}>
-          <Text style={styles.selectedText}>40</Text>
+          <Text style={styles.selectedText}>{studentsLength}</Text>
         </View>
       </View>
       <View style={styles.rightView}>
         <TouchableOpacity>
           <Text style={styles.inviteText}>Invite</Text>
         </TouchableOpacity>
-        <CustomCheckBox isSelected={isSelected} onValueChange={onValueChange} />
-        <TouchableOpacity>
-        <Trash2 size={24} color={Colors.darkGray} />
-
+        <CustomCheckBox
+          isSelected={allStudentsSelected}
+          onValueChange={onValueChange}
+        />
+        <TouchableOpacity onPress={handleDeletePress}>
+          <Trash2 size={24} color={Colors.darkGray} />
         </TouchableOpacity>
       </View>
     </View>

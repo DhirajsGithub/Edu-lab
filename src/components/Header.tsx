@@ -1,20 +1,44 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React from 'react';
-import {ArrowLeft, FilterIcon, SearchIcon} from 'lucide-react-native';
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import React, {useState} from 'react';
+import {ArrowLeft, FilterIcon, SearchIcon, XIcon} from 'lucide-react-native';
 import {Colors} from '../theme/Colors';
 
-const Header = () => {
+const Header = ({onSearchChange}: {onSearchChange: (val: string) => void}) => {
+  const [showInput, setShowInput] = useState(false);
+
   return (
     <View style={styles.container}>
       <View style={styles.content}>
         <TouchableOpacity>
           <ArrowLeft color={Colors.darkGray} size={24} />
         </TouchableOpacity>
-        <Text style={styles.headText}>🧑🏻‍🎓 Student List</Text>
+        {!showInput && <Text style={styles.headText}>🧑🏻‍🎓 Student List</Text>}
       </View>
       <View style={styles.content}>
-        <TouchableOpacity>
-          <SearchIcon color={Colors.darkGray} size={24} />
+        <View>
+          {showInput && (
+            <TextInput
+              onChangeText={text => onSearchChange(text)}
+              style={styles.textInput}
+              placeholder="Search"
+            />
+          )}
+        </View>
+        <TouchableOpacity
+          onPress={() => {
+            setShowInput(!showInput);
+            if (showInput) {
+              onSearchChange('');
+            }
+          }}>
+          {!showInput && <SearchIcon color={Colors.darkGray} size={24} />}
+          {showInput && <XIcon color={Colors.darkGray} size={24} />}
         </TouchableOpacity>
         <TouchableOpacity>
           <FilterIcon color={Colors.darkGray} size={24} />
@@ -31,6 +55,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    height: 30,
   },
   content: {
     flexDirection: 'row',
@@ -42,5 +67,13 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: Colors.text,
     fontFamily: 'AvenirNextCyr-Medium',
+  },
+  textInput: {
+    width: 150,
+    borderRadius: 10,
+    fontSize: 14,
+    padding: 5,
+    fontFamily: 'AvenirNextCyr-Regular',
+    backgroundColor: Colors.borderColor,
   },
 });

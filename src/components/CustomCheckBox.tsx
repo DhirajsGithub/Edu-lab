@@ -8,7 +8,7 @@ const CustomCheckBox = ({
   onValueChange,
 }: {
   isSelected: boolean;
-  onValueChange: () => void;
+  onValueChange: (val: boolean) => void;
 }) => {
   return (
     <View style={styles.container}>
