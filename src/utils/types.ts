@@ -17,7 +17,7 @@ export interface Student {
     [key: string]: Guardian;
   };
   class: string;
-  age: number;
+  dob: string;
   mobile_number: string;
   email: string;
   address: string;

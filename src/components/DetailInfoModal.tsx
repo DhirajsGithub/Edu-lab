@@ -1,19 +1,17 @@
+import React, {useRef} from 'react';
 import {
   Dimensions,
-  Modal,
   StyleSheet,
   Text,
   TouchableOpacity,
-  TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import React from 'react';
 import {BlurView} from '@react-native-community/blur';
 import {Student} from '../utils/types';
 import {Colors} from '../theme/Colors';
 import {PencilIcon, UserPlus} from 'lucide-react-native';
 import DetailInfoCard from './DetailInfoCard';
-
+import {Modalize} from 'react-native-modalize';
 const {height} = Dimensions.get('window');
 
 const DetailInfoModal = ({
@@ -25,64 +23,79 @@ const DetailInfoModal = ({
   onModalClose: () => void;
   selectedStudent: Student | null;
 }) => {
+  const modalizeRef = useRef<Modalize>(null);
+  React.useEffect(() => {
+    if (isVisible) {
+      modalizeRef.current?.open();
+    } else {
+      modalizeRef.current?.close();
+    }
+  }, [isVisible]);
+
+  console.log(selectedStudent);
+  if (!selectedStudent) return null;
+
   return (
-    <Modal
-      transparent={true}
-      visible={isVisible}
-      onRequestClose={onModalClose}
-      animationType="slide">
-      <TouchableWithoutFeedback onPress={onModalClose}>
-        <View style={styles.modalOverlay}>
-          <BlurView
-            style={StyleSheet.absoluteFill}
-            blurType="dark"
-            blurAmount={4}
-            reducedTransparencyFallbackColor="white"
-          />
-          <TouchableWithoutFeedback>
-            <View style={styles.modelContent}>
-              <View style={styles.head}>
-                <Text style={styles.headText}>Personal Information</Text>
-                <View style={styles.rowView}>
-                  <TouchableOpacity>
-                    <PencilIcon size={20} color={Colors.text} />
-                  </TouchableOpacity>
-                  <TouchableOpacity>
-                    <UserPlus size={20} color={Colors.text} />
-                  </TouchableOpacity>
-                </View>
-              </View>
-              <View style={styles.infoCard}>
-                <DetailInfoCard person={selectedStudent} />
-              </View>
-             <View style={{marginTop: 30}}>
-             <Text style={styles.headText}>Guardian Information</Text>
-             <View style={styles.infoCard}>
-                <DetailInfoCard person={selectedStudent} />
-              </View>
-             </View>
+    <>
+      {isVisible && (
+        <BlurView
+          style={StyleSheet.absoluteFill}
+          blurType="dark"
+          blurAmount={4}
+          reducedTransparencyFallbackColor="white"
+        />
+      )}
+      <Modalize
+        ref={modalizeRef}
+        onClosed={onModalClose}
+        modalHeight={height * 0.9}
+        snapPoint={height * 0.7}
+        modalTopOffset={80}
+        handlePosition="outside"
+        adjustToContentHeight={false}
+        closeSnapPointStraightEnabled={false}
+        scrollViewProps={{showsVerticalScrollIndicator: false}}
+        overlayStyle={{backgroundColor: 'transparent'}}>
+        <View style={styles.modalContent}>
+          <View style={styles.head}>
+            <Text style={styles.headText}>Personal Information</Text>
+            <View style={styles.rowView}>
+              <TouchableOpacity>
+                <PencilIcon size={20} color={Colors.text} />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <UserPlus size={20} color={Colors.text} />
+              </TouchableOpacity>
             </View>
-          </TouchableWithoutFeedback>
+          </View>
+          <View style={styles.infoCard}>
+            <DetailInfoCard person={selectedStudent} />
+          </View>
+          <View style={{marginTop: 30}}>
+            <Text style={styles.headText}>Guardian Information</Text>
+            <View style={styles.infoCard}>
+              {Object.values(selectedStudent?.guardians).map(
+                (guardian: Guardian) => (
+                  <DetailInfoCard key={guardian.id} person={guardian} />
+                ),
+              )}
+            </View>
+          </View>
         </View>
-      </TouchableWithoutFeedback>
-    </Modal>
+      </Modalize>
+    </>
   );
 };
 
 export default DetailInfoModal;
 
 const styles = StyleSheet.create({
-  modalOverlay: {
+  modalContent: {
     flex: 1,
-    justifyContent: 'flex-end',
-  },
-  modelContent: {
+    padding: 20,
     backgroundColor: 'white',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    padding: 20,
-    height: height * 0.6,
-    width: '100%',
   },
   headText: {
     fontSize: 20,
@@ -100,5 +113,6 @@ const styles = StyleSheet.create({
   },
   infoCard: {
     marginTop: 20,
+    gap: 10,
   },
 });

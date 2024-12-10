@@ -5,12 +5,18 @@ import {Colors} from '../theme/Colors';
 import {Guardian, Student} from '../utils/types';
 
 const MetaDetail = ({label, value}: {label: string; value: string}) => {
+  const isMobileOrEmail = label === 'Mobile' || label === 'Email Address';
+
+  const valueStyle = isMobileOrEmail
+    ? {color: Colors.brightBlue, textDecorationLine: 'underline'}
+    : {};
+
   return (
     <View style={styles.metaDetail}>
       <Text numberOfLines={1} style={styles.label}>
         {label}
       </Text>
-      <Text numberOfLines={1} style={styles.value}>
+      <Text style={[styles.value, valueStyle]}>
         {value}
       </Text>
     </View>
@@ -18,9 +24,9 @@ const MetaDetail = ({label, value}: {label: string; value: string}) => {
 };
 
 const DetailInfoCard = ({person}: {person: Student | Guardian}) => {
-  console.log(person?.name)
+  const row2 = person?.registration_number || person?.dob || person?.class;
   return (
-    <View style={styles.container}>
+    <View style={[[styles.container, {gap: row2 ? 20 : 10}]]}>
       <View style={styles.view1}>
         <View style={styles.avaName}>
           <Avatar width={50} height={50} uri={person?.profile_picture} />
@@ -35,10 +41,16 @@ const DetailInfoCard = ({person}: {person: Student | Guardian}) => {
             value={person?.registration_number}
           />
         )}
-        {person?.age && (
-          <MetaDetail label="Age" value={`${person?.age} years`} />
-        )}
+        {person?.dob && <MetaDetail label="Age" value={`${person?.dob}`} />}
         {person?.class && <MetaDetail label="Classes" value={person?.class} />}
+      </View>
+      <View style={styles.metaDetails}>
+        {person?.mobile_number && (
+          <MetaDetail label="Mobile" value={person?.mobile_number} />
+        )}
+        {person?.email && (
+          <MetaDetail label="Email Address" value={`${person?.email}`} />
+        )}
       </View>
     </View>
   );
@@ -60,11 +72,6 @@ const styles = StyleSheet.create({
   avaName: {
     gap: 10,
   },
-  avatar: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-  },
   nameText: {
     fontSize: 16,
     fontFamily: 'AvenirNextCyr-Demi',
@@ -76,6 +83,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   metaDetail: {
+    maxWidth: '70%',
     gap: 5,
   },
   label: {
@@ -84,7 +92,7 @@ const styles = StyleSheet.create({
     fontFamily: 'AvenirNextCyr-Regular',
   },
   value: {
-    maxWidth: 100,
+    maxWidth: '100%',
     fontSize: 14,
     color: Colors.text,
     fontFamily: 'AvenirNextCyr-Medium',
@@ -92,8 +100,7 @@ const styles = StyleSheet.create({
   metaDetails: {
     width: '100%',
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    gap: 8,
+    alignItems: "flex-start",
+    gap: 20,
   },
 });

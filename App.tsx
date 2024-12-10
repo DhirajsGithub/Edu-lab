@@ -6,19 +6,16 @@
  */
 
 import React from 'react';
-import {
 
-  Text,
-
-} from 'react-native';
 import Students from './src/screens/Students';
-
-
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 function App(): React.JSX.Element {
- return (<Students />)
+  return (
+    <GestureHandlerRootView style={{flex: 1}}>
+      <Students />
+    </GestureHandlerRootView>
+  );
 }
-
-
 
 export default App;

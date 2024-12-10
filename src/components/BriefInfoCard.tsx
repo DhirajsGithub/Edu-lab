@@ -4,6 +4,7 @@ import Avatar from './Avatar';
 import CustomCheckBox from './CustomCheckBox';
 import {Guardian, Student} from '../utils/types';
 import {Colors} from '../theme/Colors';
+import calAge from '../utils/calAge';
 
 const MetaDetail = ({label, value}: {label: string; value: string}) => {
   return (
@@ -63,7 +64,7 @@ const BriefInfoCard = ({
           label="Registration Number"
           value={student.registration_number}
         />
-        <MetaDetail label="Age" value={`${student.age} years`} />
+        <MetaDetail label="Age" value={`${calAge(student.dob)} years`} />
         <MetaDetail label="Classes" value={student.class} />
       </View>
 
