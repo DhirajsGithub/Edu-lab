@@ -3,12 +3,16 @@ import {
   Modal,
   StyleSheet,
   Text,
+  TouchableOpacity,
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
 import React from 'react';
 import {BlurView} from '@react-native-community/blur';
-import { Student } from '../utils/types';
+import {Student} from '../utils/types';
+import {Colors} from '../theme/Colors';
+import {PencilIcon, UserPlus} from 'lucide-react-native';
+import DetailInfoCard from './DetailInfoCard';
 
 const {height} = Dimensions.get('window');
 
@@ -19,7 +23,7 @@ const DetailInfoModal = ({
 }: {
   isVisible: boolean;
   onModalClose: () => void;
-  selectedStudent: Student  | null;
+  selectedStudent: Student | null;
 }) => {
   return (
     <Modal
@@ -37,7 +41,26 @@ const DetailInfoModal = ({
           />
           <TouchableWithoutFeedback>
             <View style={styles.modelContent}>
-              <Text>Hello there</Text>
+              <View style={styles.head}>
+                <Text style={styles.headText}>Personal Information</Text>
+                <View style={styles.rowView}>
+                  <TouchableOpacity>
+                    <PencilIcon size={20} color={Colors.text} />
+                  </TouchableOpacity>
+                  <TouchableOpacity>
+                    <UserPlus size={20} color={Colors.text} />
+                  </TouchableOpacity>
+                </View>
+              </View>
+              <View style={styles.infoCard}>
+                <DetailInfoCard person={selectedStudent} />
+              </View>
+             <View style={{marginTop: 30}}>
+             <Text style={styles.headText}>Guardian Information</Text>
+             <View style={styles.infoCard}>
+                <DetailInfoCard person={selectedStudent} />
+              </View>
+             </View>
             </View>
           </TouchableWithoutFeedback>
         </View>
@@ -60,5 +83,22 @@ const styles = StyleSheet.create({
     padding: 20,
     height: height * 0.6,
     width: '100%',
+  },
+  headText: {
+    fontSize: 20,
+    fontFamily: 'AvenirNextCyr-Demi',
+    color: Colors.text,
+  },
+  head: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  rowView: {
+    flexDirection: 'row',
+    gap: 20,
+  },
+  infoCard: {
+    marginTop: 20,
   },
 });

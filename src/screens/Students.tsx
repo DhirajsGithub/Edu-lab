@@ -53,9 +53,11 @@ const Students = () => {
   };
 
   const handleDeletePress = () => {
-    setStudents(prev =>
-      prev.filter(student => !selectedStudents.some(s => s.id === student.id)),
+    let p = students.filter(
+      student => !selectedStudents.some(s => s.id === student.id),
     );
+    setStudents(p);
+    setFilteredStudents(p);
     setSelectedStudents([]);
   };
 

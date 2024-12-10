@@ -1,7 +1,7 @@
 export interface Guardian {
   id: string;
   profile_picture: string;
-  full_name: string;
+  name: string;
   email: string;
   mobile_number: string;
 }
