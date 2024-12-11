@@ -1,13 +1,11 @@
 {
     "ClassesData": [
-      { "label": "Jan 15, 1985", "value": "1985-01-15" },
-      { "label": "Aug 22, 1998", "value": "1998-08-22" },
-      { "label": "Dec 31, 2000", "value": "2000-12-31" },
-      { "label": "Mar 10, 2010", "value": "2010-03-10" },
-      { "label": "Jul 4, 2020", "value": "2020-07-04" },
-      { "label": "Nov 11, 2021", "value": "2021-11-11" },
-      { "label": "Feb 14, 2022", "value": "2022-02-14" },
-      { "label": "Oct 1, 2023", "value": "2023-10-01" }
+      { "label": "10A", "value": "10A" },
+      { "label": "10B", "value": "10B" },
+      { "label": "10C", "value": "10C" },
+      { "label": "11A", "value": "11A" },
+      { "label": "11B", "value": "11B" }
+      
     ]
   }
   

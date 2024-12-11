@@ -659,6 +659,64 @@
       "address": "890 Ocean View Drive, Sunset Cliffs",
       "gender": "Male",
       "hobbies": ["Surfing", "Environmental Science"]
+    },
+    {
+      "id": "s23",
+      "name": "Sophia Rodriguez",
+      "profile_picture": "https://randomuser.me/api/portraits/women/34.jpg",
+      "registration_number": "REG2023023",
+      "guardians": {
+        "father": {
+          "id": "g48",
+          "profile_picture": "https://randomuser.me/api/portraits/men/72.jpg",
+          "full_name": "Carlos Rodriguez",
+          "email": "carlos.rodriguez@example.com",
+          "mobile_number": "7890654321"
+        },
+        "mother": {
+          "id": "g49",
+          "profile_picture": "https://randomuser.me/api/portraits/women/65.jpg",
+          "full_name": "Maria Rodriguez",
+          "email": "maria.rodriguez@example.com",
+          "mobile_number": "7890654322"
+        }
+      },
+      "class": "11B",
+      "dob": "2008-07-15",
+      "mobile_number": "7902345678",
+      "email": "sophiarodriguez@example.com",
+      "address": "456 Maple Street, Greenville",
+      "gender": "Female",
+      "hobbies": ["Photography", "Robotics"]
+    },
+    {
+      "id": "s24",
+      "name": "Ethan Kim",
+      "profile_picture": "https://randomuser.me/api/portraits/men/44.jpg",
+      "registration_number": "REG2023024",
+      "guardians": {
+        "father": {
+          "id": "g50",
+          "profile_picture": "https://randomuser.me/api/portraits/men/81.jpg",
+          "full_name": "Michael Kim",
+          "email": "michael.kim@example.com",
+          "mobile_number": "7890987654"
+        },
+        "mother": {
+          "id": "g51",
+          "profile_picture": "https://randomuser.me/api/portraits/women/77.jpg",
+          "full_name": "Sarah Kim",
+          "email": "sarah.kim@example.com",
+          "mobile_number": "7890987655"
+        }
+      },
+      "class": "11B",
+      "dob": "2008-11-30",
+      "mobile_number": "7903456789",
+      "email": "ethankim@example.com",
+      "address": "789 Riverside Road, Brookside",
+      "gender": "Male",
+      "hobbies": ["Chess", "Debate Club"]
     }
   ]
 }

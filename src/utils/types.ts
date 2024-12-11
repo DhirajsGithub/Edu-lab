@@ -24,3 +24,8 @@ export interface Student {
   gender: string;
   hobbies: string[];
 }
+
+export interface ClassData {
+  label: string;
+  value: string;
+}

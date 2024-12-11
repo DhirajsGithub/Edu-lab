@@ -10,6 +10,7 @@ import DetailInfoModal from '../components/DetailInfoModal';
 import {Colors} from '../theme/Colors';
 import debounce from '../utils/debounce';
 import EditAddModal from '../components/EditAddModal';
+import FilterByClassModal from '../components/FilterByClassModal';
 
 const Students = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -22,6 +23,7 @@ const Students = () => {
   const [selectAllToggle, setSelectAllToggle] = useState(false);
   const [editModalVisibility, setEditModalVisibility] = useState(false);
   const [editStudentInfo, setEditStudentInfo] = useState<Student | null>(null);
+  const [isVisibleFilterModal, setIsVisibleFilterModal] = useState(false);
 
   const onModalClose = () => {
     setIsModalVisible(false);
@@ -78,28 +80,43 @@ const Students = () => {
     setEditModalVisibility(true);
   };
   const handleSaveChangePress = (student: Student) => {
-    setStudents(prev =>
-      prev.map(s => (s.id === student.id ? student : s)),
-    );
+    setStudents(prev => prev.map(s => (s.id === student.id ? student : s)));
     setFilteredStudents(prev =>
       prev.map(s => (s.id === student.id ? student : s)),
     );
     setSelectedStudent(student);
     setEditModalVisibility(false);
     setEditStudentInfo(null);
-  }
+  };
+
+  const handleFilterModalClose = () => {
+    setIsVisibleFilterModal(false);
+  };
+  const handleClassFilterApply = (selectedClasses: string[]) => {
+    if (selectedClasses.length !== 0) {
+      setFilteredStudents(
+        students.filter(student => selectedClasses.includes(student.class)),
+      );
+    }else{
+      setFilteredStudents(students);
+    }
+    setIsVisibleFilterModal(false);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor={Colors.white} />
       <View style={styles.wrapper}>
         <View style={styles.headers}>
-          <Header onSearchChange={onSearchChange} />
+          <Header
+            handleFilterPress={() => setIsVisibleFilterModal(true)}
+            onSearchChange={onSearchChange}
+          />
           <StudentsActionHeader
             allStudentsSelected={selectedStudents.length === students.length}
             selectAllStudents={handleAllStudentsSelected}
             handleDeletePress={handleDeletePress}
-            studentsLength={selectedStudents.length}
+            studentsLength={filteredStudents.length}
           />
         </View>
         <StudentsList
@@ -122,6 +139,11 @@ const Students = () => {
         studentInfo={editStudentInfo}
         onClose={handleCloseEditModal}
         isVisible={editModalVisibility}
+      />
+      <FilterByClassModal
+        isVisible={isVisibleFilterModal}
+        onClose={handleFilterModalClose}
+        onApply={handleClassFilterApply}
       />
     </SafeAreaView>
   );

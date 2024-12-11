@@ -1,79 +1,87 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 📚 Student Management App
 
-# Getting Started
+Welcome to the **Student Management App** – your go-to solution for managing student information efficiently! This React Native application provides features to view, create, edit, and filter student lists seamlessly, all while maintaining a clean and intuitive interface.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+---
 
-## Step 1: Start the Metro Server
+## ✨ Key Features
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+- 📋 **Student List Management**: View a detailed list of students with attributes like name, class, age, registration number, and more.
+- 🔍 **Search & Filter**: Search students by name and filter by class for better navigation.
+- ✏️ **Edit Student Details**: Update student information directly from the app using a sleek modal.
+- ➕ **Add New Students**: Dynamically add students to the list for real-time updates.
+- 🗑️ **Delete Students**: Remove students from the list individually or in bulk.
+- 📊 **Data Overview**: Comprehensive display of student data, including guardians and profile pictures.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+---
 
-```bash
-# using npm
-npm start
+## 🖼️ App Preview
+<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
 
-# OR using Yarn
-yarn start
-```
+  <div style="width: 150px; text-align: center;">
+    <img src="./src/assets/screenshots/p1.png" alt="Student List" style="width: 400px; border-radius: 8px;" />
+  </div>
 
-## Step 2: Start your Application
+  <div style="width: 150px; text-align: center;">
+    <img src="./src/assets/screenshots/p2.png" alt="Student List" style="width: 400px; border-radius: 8px;" />
+  </div>
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+  <div style="width: 150px; text-align: center;">
+    <img src="./src/assets/screenshots/p3.png" alt="Student List" style="width: 400px; border-radius: 8px;" />
+  </div>
 
-### For Android
+  <div style="width: 150px; text-align: center;">
+    <img src="./src/assets/screenshots/p4.png" alt="Student List" style="width: 400px; border-radius: 8px;" />
+  </div>
 
-```bash
-# using npm
-npm run android
+  <div style="width: 150px; text-align: center;">
+    <img src="./src/assets/screenshots/p5.png" alt="Student List" style="width: 400px; border-radius: 8px;" />
+  </div>
 
-# OR using Yarn
-yarn android
-```
+  <div style="width: 150px; text-align: center;">
+    <img src="./src/assets/screenshots/p6.png" alt="Student List" style="width: 400px; border-radius: 8px;" />
+  </div>
 
-### For iOS
+</div>
 
-```bash
-# using npm
-npm run ios
+> Note: Replace the paths above with the correct file paths where your images are stored locally.
 
-# OR using Yarn
-yarn ios
-```
+---
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+## 🚀 Getting Started
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+Follow these steps to set up the app on your local machine.
 
-## Step 3: Modifying your App
+### Prerequisites
 
-Now that you have successfully run the app, let's modify it.
+Ensure you have the following installed on your system:
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+- 🖥️ Node.js (>= 23.x)
+- 📱 React Native CLI
+- 💻 Android Studio or Xcode (for device emulation)
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+### Installation
 
-## Congratulations! :tada:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/DhirajsGithub/Edu-lab
+   cd Edu-lab
+   ```
+2. Install the dependencies:
+   ```bash
+   npm install
+   ```
+3. Install pods (for iOS):
+   ```bash
+   cd ios && pod install && cd ..
+   ```
+### Run the app:
+3. For Android:
+   ```bash
+   npx react-native run-android
+   ```
+4. For iOS:
+   ```bash
+   npx react-native run-ios
+   ```
 
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.

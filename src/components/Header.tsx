@@ -9,7 +9,13 @@ import React, {useState} from 'react';
 import {ArrowLeft, FilterIcon, SearchIcon, XIcon} from 'lucide-react-native';
 import {Colors} from '../theme/Colors';
 
-const Header = ({onSearchChange}: {onSearchChange: (val: string) => void}) => {
+const Header = ({
+  onSearchChange,
+  handleFilterPress,
+}: {
+  onSearchChange: (val: string) => void;
+  handleFilterPress: () => void;
+}) => {
   const [showInput, setShowInput] = useState(false);
 
   return (
@@ -42,7 +48,11 @@ const Header = ({onSearchChange}: {onSearchChange: (val: string) => void}) => {
           {showInput && <XIcon color={Colors.darkGray} size={24} />}
         </TouchableOpacity>
         <TouchableOpacity>
-          <FilterIcon color={Colors.darkGray} size={24} />
+          <FilterIcon
+            onPress={handleFilterPress}
+            color={Colors.darkGray}
+            size={24}
+          />
         </TouchableOpacity>
       </View>
     </View>
