@@ -16,35 +16,33 @@ Welcome to the **Student Management App** – your go-to solution for managing s
 ---
 
 ## 🖼️ App Preview
-<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-start;">
 
-  <div style="width: 150px; text-align: center;">
+  <div style="width: 100px; text-align: center;">
     <img src="./src/assets/screenshots/p1.png" alt="Student List" style="width: 400px; border-radius: 8px;" />
   </div>
 
-  <div style="width: 150px; text-align: center;">
+  <div style="width: 100px; text-align: center;">
     <img src="./src/assets/screenshots/p2.png" alt="Student List" style="width: 400px; border-radius: 8px;" />
   </div>
 
-  <div style="width: 150px; text-align: center;">
+  <div style="width: 100px; text-align: center;">
     <img src="./src/assets/screenshots/p3.png" alt="Student List" style="width: 400px; border-radius: 8px;" />
   </div>
 
-  <div style="width: 150px; text-align: center;">
+  <div style="width: 100px; text-align: center;">
     <img src="./src/assets/screenshots/p4.png" alt="Student List" style="width: 400px; border-radius: 8px;" />
   </div>
 
-  <div style="width: 150px; text-align: center;">
+  <div style="width: 100px; text-align: center;">
     <img src="./src/assets/screenshots/p5.png" alt="Student List" style="width: 400px; border-radius: 8px;" />
   </div>
 
-  <div style="width: 150px; text-align: center;">
+  <div style="width: 100px; text-align: center;">
     <img src="./src/assets/screenshots/p6.png" alt="Student List" style="width: 400px; border-radius: 8px;" />
   </div>
 
 </div>
-
-> Note: Replace the paths above with the correct file paths where your images are stored locally.
 
 ---
 
