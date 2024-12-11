@@ -9,6 +9,7 @@ import AddButton from '../components/AddButton';
 import DetailInfoModal from '../components/DetailInfoModal';
 import {Colors} from '../theme/Colors';
 import debounce from '../utils/debounce';
+import EditAddModal from '../components/EditAddModal';
 
 const Students = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -19,6 +20,8 @@ const Students = () => {
   const [filteredStudents, setFilteredStudents] = useState<Student[]>(students);
   const [selectedStudents, setSelectedStudents] = useState<Student[]>([]);
   const [selectAllToggle, setSelectAllToggle] = useState(false);
+  const [editModalVisibility, setEditModalVisibility] = useState(false);
+  const [editStudentInfo, setEditStudentInfo] = useState<Student | null>(null);
 
   const onModalClose = () => {
     setIsModalVisible(false);
@@ -66,6 +69,26 @@ const Students = () => {
     setSelectedStudents(isSelected ? students : []);
   };
 
+  const handleCloseEditModal = () => {
+    setEditModalVisibility(false);
+    setEditStudentInfo(null);
+  };
+  const handleEditStudentPress = (student: Student) => {
+    setEditStudentInfo(student);
+    setEditModalVisibility(true);
+  };
+  const handleSaveChangePress = (student: Student) => {
+    setStudents(prev =>
+      prev.map(s => (s.id === student.id ? student : s)),
+    );
+    setFilteredStudents(prev =>
+      prev.map(s => (s.id === student.id ? student : s)),
+    );
+    setSelectedStudent(student);
+    setEditModalVisibility(false);
+    setEditStudentInfo(null);
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor={Colors.white} />
@@ -89,9 +112,16 @@ const Students = () => {
       </View>
       <AddButton />
       <DetailInfoModal
+        handleEditStudentPress={handleEditStudentPress}
         selectedStudent={selectedStudent}
         onModalClose={onModalClose}
         isVisible={isModalVisible}
+      />
+      <EditAddModal
+        handleSaveChangePress={handleSaveChangePress}
+        studentInfo={editStudentInfo}
+        onClose={handleCloseEditModal}
+        isVisible={editModalVisibility}
       />
     </SafeAreaView>
   );

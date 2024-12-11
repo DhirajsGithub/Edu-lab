@@ -18,10 +18,12 @@ const DetailInfoModal = ({
   isVisible,
   onModalClose,
   selectedStudent,
+  handleEditStudentPress,
 }: {
   isVisible: boolean;
   onModalClose: () => void;
   selectedStudent: Student | null;
+  handleEditStudentPress: (student: Student) => void;
 }) => {
   const modalizeRef = useRef<Modalize>(null);
   React.useEffect(() => {
@@ -59,7 +61,10 @@ const DetailInfoModal = ({
           <View style={styles.head}>
             <Text style={styles.headText}>Personal Information</Text>
             <View style={styles.rowView}>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() =>
+                  handleEditStudentPress(selectedStudent as Student)
+                }>
                 <PencilIcon size={20} color={Colors.text} />
               </TouchableOpacity>
               <TouchableOpacity>
