@@ -4,6 +4,13 @@ Welcome to the **Student Management App** – your go-to solution for managing s
 
 ---
 
+## 🖼️ App Preview
+| ![p1](./src/assets/screenshots/p1.png) | ![p2](./src/assets/screenshots/p2.png) | ![p3](./src/assets/screenshots/p3.png) |
+|----------------------------------------|----------------------------------------|----------------------------------------|
+| ![p4](./src/assets/screenshots/p4.png) | ![p5](./src/assets/screenshots/p5.png) | ![p6](./src/assets/screenshots/p6.png) |
+
+---
+
 ## ✨ Key Features
 
 - 📋 **Student List Management**: View a detailed list of students with attributes like name, class, age, registration number, and more.
@@ -13,12 +20,7 @@ Welcome to the **Student Management App** – your go-to solution for managing s
 - 🗑️ **Delete Students**: Remove students from the list individually or in bulk.
 - 📊 **Data Overview**: Comprehensive display of student data, including guardians and profile pictures.
 
----
 
-## 🖼️ App Preview
-| ![p1](./src/assets/screenshots/p1.png) | ![p2](./src/assets/screenshots/p2.png) | ![p3](./src/assets/screenshots/p3.png) |
-|----------------------------------------|----------------------------------------|----------------------------------------|
-| ![p4](./src/assets/screenshots/p4.png) | ![p5](./src/assets/screenshots/p5.png) | ![p6](./src/assets/screenshots/p6.png) |
 
 
 ---
