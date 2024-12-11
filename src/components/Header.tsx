@@ -27,6 +27,7 @@ const Header = ({onSearchChange}: {onSearchChange: (val: string) => void}) => {
               onChangeText={text => onSearchChange(text)}
               style={styles.textInput}
               placeholder="Search"
+              placeholderTextColor={Colors.subText}
             />
           )}
         </View>
@@ -75,5 +76,6 @@ const styles = StyleSheet.create({
     padding: 5,
     fontFamily: 'AvenirNextCyr-Regular',
     backgroundColor: Colors.borderColor,
+    color: Colors.text,
   },
 });

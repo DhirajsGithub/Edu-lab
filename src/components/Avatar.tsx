@@ -5,7 +5,7 @@ const Avatar = ({width = 30, height = 30, uri}: {width?: number; height?: number
   return (
     <View>
       <Image
-        style={[{width, height, borderRadius: '100%'}]}
+        style={[{width, height, borderRadius: width}]}
         resizeMode="cover"
         source={{
           uri,

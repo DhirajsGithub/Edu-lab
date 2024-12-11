@@ -1,7 +1,7 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import CheckBox from '@react-native-community/checkbox';
 import {Colors} from '../theme/Colors';
+import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
 const CustomCheckBox = ({
   isSelected,
@@ -12,16 +12,22 @@ const CustomCheckBox = ({
 }) => {
   return (
     <View style={styles.container}>
-      <CheckBox
-        animationDuration={0.1}
-        style={styles.checkbox}
-        value={isSelected}
-        onValueChange={onValueChange}
-        boxType="square"
-        tintColor={Colors.tintColor}
-        onTintColor={Colors.white}
-        onFillColor={Colors.darkGray}
-        onCheckColor={Colors.white}
+      <BouncyCheckbox
+        isChecked={isSelected}
+        disableText
+        fillColor={Colors.darkGray}
+        innerIconStyle={{
+          borderRadius: 5,
+          borderWidth: 2,
+          borderColor: isSelected ? Colors.darkGray : Colors.tintColor,
+        }}
+        size={20}
+        useBuiltInState={false}
+        iconStyle={{borderRadius: 5, borderWidth: 2}}
+        onPress={(checked: boolean) => {
+          console.log(checked);
+          onValueChange(!isSelected);
+        }}
       />
     </View>
   );

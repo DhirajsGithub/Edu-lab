@@ -1,5 +1,5 @@
 import React, {useCallback, useState} from 'react';
-import {SafeAreaView, StyleSheet, View} from 'react-native';
+import {SafeAreaView, StatusBar, StyleSheet, View} from 'react-native';
 import {Student} from '../utils/types';
 import data from '../assets/data.json';
 import Header from '../components/Header';
@@ -68,6 +68,7 @@ const Students = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar barStyle="dark-content" backgroundColor={Colors.white} />
       <View style={styles.wrapper}>
         <View style={styles.headers}>
           <Header onSearchChange={onSearchChange} />

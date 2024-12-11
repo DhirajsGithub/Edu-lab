@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 import {BlurView} from '@react-native-community/blur';
-import {Student} from '../utils/types';
+import {Guardian, Student} from '../utils/types';
 import {Colors} from '../theme/Colors';
 import {PencilIcon, UserPlus} from 'lucide-react-native';
 import DetailInfoCard from './DetailInfoCard';
@@ -32,7 +32,6 @@ const DetailInfoModal = ({
     }
   }, [isVisible]);
 
-  console.log(selectedStudent);
   if (!selectedStudent) return null;
 
   return (
